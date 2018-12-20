@@ -1,0 +1,75 @@
+﻿<Window x:Class="JSReport.ReportWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:JSReport"
+        mc:Ignorable="d" 
+        Initialized="Window_Initialized"
+        Closed="Window_Closed"
+        Title="JS Report" Height="600" Width="1000">
+    <Grid Name="invoicePageGrid">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+
+        <DockPanel Grid.Row="0" Grid.Column="0" Name="documentSelectPanel" LastChildFill="True"
+                   Background="LightSteelBlue" Visibility="Collapsed">
+            <Label DockPanel.Dock="Left" Name="selectLabel" 
+                   MinWidth="75" Margin="3">Report</Label>
+            <ComboBox Name="choiceListBox" 
+                      MinWidth="200" Margin="3" 
+                      Background="White" DockPanel.Dock="Right"></ComboBox>
+        </DockPanel>
+
+        <DockPanel Grid.Row="1" Grid.Column="0" LastChildFill="True" 
+                   Background="LightSteelBlue">
+            <StackPanel Orientation="Horizontal">
+                <Label Margin="3" MinWidth="75" VerticalAlignment="Center">Font</Label>
+                <ComboBox Name="fontsCombo" Margin="3" MinWidth="120" 
+                          Text="{Binding Path=FontFamily}"></ComboBox>
+                <Label Margin="3">Print Font Size</Label>
+                <TextBlock Text="{Binding Value, ElementName=printSize, StringFormat={}{0:0}}" 
+                           VerticalAlignment="Center" Margin="3" MinWidth="20"/>
+                <Slider Height="20" VerticalAlignment="Center" Name="printSize" 
+                            Interval="1" Maximum="24" Minimum="6" MinWidth="100" 
+                            Value="{Binding Path=FontSize}" 
+                            SmallChange="1" LargeChange="1" TickFrequency="1" 
+                            IsSnapToTickEnabled="True" 
+                            AutoToolTipPlacement="BottomRight" />
+                <Label Margin="3">Print Margin</Label>
+                <Slider Height="20" VerticalAlignment="Center" Name="printMarginSize" 
+                            Interval="1" Maximum="96" Minimum="0" MinWidth="100" 
+                            Value="{Binding Path=PrintMarginSize}" 
+                            SmallChange="1" LargeChange="1" TickFrequency="1"
+                            AutoToolTipPlacement="BottomRight" />
+            </StackPanel>
+        </DockPanel>
+        
+        <DockPanel Grid.Row="2" Grid.Column="0" LastChildFill="True">
+            <ScrollViewer DockPanel.Dock="Right"
+                      Name="previewScrollViewer" 
+                      VerticalAlignment="Stretch" HorizontalAlignment="Stretch" 
+                      Focusable="True" 
+                      HorizontalScrollBarVisibility="Auto" 
+                      HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch"
+                      SizeChanged="previewScrollViewer_SizeChanged">
+                <local:PrintPreviewCanvas x:Name="printPreviewSurface" Background="White" />
+            </ScrollViewer>
+        </DockPanel>
+        
+        <DockPanel Grid.Row="3" LastChildFill="False" Background="LightSteelBlue">
+            <Label>Page</Label>
+            <Label Name="currentPageLabel">1</Label>
+            <Button Style="{StaticResource CommandButtonStyle}" Name="prevPage" Click="prevPage_Click">Previous Page</Button>
+            <Button Style="{StaticResource CommandButtonStyle}" Name="nextPage" Click="nextPage_Click">Next Page</Button>
+            <Button Style="{StaticResource CommandButtonStyle}" Name="printButton" Click="printButton_Click">Print</Button>
+        </DockPanel>
+    </Grid>
+</Window>

@@ -1,0 +1,59 @@
+﻿<Application x:Class="JSReport.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             Startup="Application_Startup">
+    <Application.Resources>
+        <Style x:Key="PageHeading2Style">
+            <Setter Property="Control.Background">
+                <Setter.Value>
+                    <LinearGradientBrush EndPoint="1.099,0.8" StartPoint=" 0.3,0.161">
+                        <GradientStop Color="LightSteelBlue" Offset="0" />
+                        <GradientStop Color="LightGray" Offset="0.5" />
+                        <GradientStop Color="White" Offset="1" />
+                    </LinearGradientBrush>
+                </Setter.Value>
+            </Setter>
+            <Setter Property="Control.Margin" Value="2"></Setter>
+        </Style>
+
+        <Style x:Key="CommandButtonToolbarStyle">
+            <Setter Property="Control.Background">
+                <Setter.Value>
+                    <LinearGradientBrush EndPoint="1.099,0.8" StartPoint=" 0.3,0.161">
+                        <GradientStop Color="LightSteelBlue" Offset="0" />
+                        <GradientStop Color="LightGray" Offset="0.5" />
+                        <GradientStop Color="White" Offset="1" />
+                    </LinearGradientBrush>
+                </Setter.Value>
+            </Setter>
+            <Setter Property="Control.Margin" Value="2"></Setter>
+        </Style>
+
+        <Style x:Key="ComboBoxStyleEditable">
+            <Setter Property="Control.MinWidth" Value="100"></Setter>
+            <Setter Property="Control.Margin" Value="2"></Setter>
+            <Setter Property="ComboBox.IsEditable" Value="True"></Setter>
+            <Setter Property="Control.Background">
+                <Setter.Value>
+                    <LinearGradientBrush EndPoint="-1,0.8" StartPoint="1,0.161">
+                        <GradientStop Color="WhiteSmoke" Offset="0" />
+                        <GradientStop Color="Wheat" Offset="1" />
+                    </LinearGradientBrush>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style x:Key="CommandButtonStyle">
+            <Setter Property="Control.MinWidth" Value="100"></Setter>
+            <Setter Property="Control.Margin" Value="2"></Setter>
+            <Setter Property="Control.Background">
+                <Setter.Value>
+                    <LinearGradientBrush EndPoint="-1,0.8" StartPoint="1,0.161">
+                        <GradientStop Color="LightSteelBlue" Offset="0" />
+                        <GradientStop Color="White" Offset="1" />
+                    </LinearGradientBrush>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Application.Resources>
+</Application>
